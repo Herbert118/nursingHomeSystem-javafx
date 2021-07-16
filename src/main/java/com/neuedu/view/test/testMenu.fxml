@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.test.TestViewController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #4285f5;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="测试页" textFill="#fffdfd">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></HBox>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #4285f5;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="loginView" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToLoginView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="loginView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton fx:id="MainMenu" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToMainMenu" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="MainMenu" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="patientView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="bedView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="SpecialView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="QuestionView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="templateView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="BuildingView" textAlignment="CENTER" textFill="#f4eeee">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXButton>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

@@ -9,3 +9,12 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/.settings
+/.classpath
+/.project
+/test1.json
+/test1.ser
+/test2.json
+/test2.ser
+/.idea
+/nursingHomeSystem-javafx.iml
