@@ -28,6 +28,7 @@ public class TestViewController {
 	    @FXML
 	    private JFXButton bedView;
 
+	    
 	    @FXML
 	    private JFXButton SpecialView;
 
@@ -42,6 +43,9 @@ public class TestViewController {
 
 	    @FXML
 	    void navToBuildingView(ActionEvent event) {
+			System.out.println("click");
+			router.navToBuidingView();
+
 
 	    }
 
@@ -62,18 +66,24 @@ public class TestViewController {
 	    }
 
 	    @FXML
-	    void navTobedView(ActionEvent event) {
+	    void navToBedView(ActionEvent event) {
 
 	    }
 
 	    @FXML
-	    void navTotemplateView(ActionEvent event) {
+	    void navToTemplateView(ActionEvent event) {
 
 	    }
 
 	    @FXML
-	    void patientView(ActionEvent event) {
-
+	    void navToPatientView(ActionEvent event) {
+	    	System.out.println("patient");
+	    	router.navToPatient();
+	    }
+	    
+	    @FXML
+	    void navToQuestionView(ActionEvent event) {
+	    	
 	    }
 
 	    @FXML

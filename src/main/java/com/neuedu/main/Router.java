@@ -7,9 +7,12 @@ import com.neuedu.view.login.LoginView;
 import com.neuedu.view.login.LoginViewController;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 
 public class Router {
 	private static Router router;
@@ -45,7 +48,10 @@ public class Router {
 		}
 		root.setRight(null);
 		root.setBottom(null);
-		Scene scene = new Scene(root);
+		double width = (int) Screen.getPrimary().getBounds().getWidth();
+        double height = (int) Screen.getPrimary().getBounds().getHeight();
+		Scene scene = new Scene(root,width*9/10,height*9/10);
+		scene.getStylesheets().add("testView.css");
 		app.setStageScene(scene);
 		
 		
@@ -53,10 +59,40 @@ public class Router {
 	public void navToLogin() {
 		LoginView view = new LoginView();
 		LoginViewController loginController = new LoginViewController(view);
-		root.setCenter(view);
-		
+		view.setPrefHeight(200);
+		view.setPrefWidth(200);
+		StackPane pane = new StackPane();
+		pane.getChildren().add(view);
+
+		view.setAlignment(Pos.CENTER);
+		root.setCenter(pane);
+
 		//Scene scene = new Scene(root);
 	 	//app.setStageScene(scene);
 	}
 	
+	public void navToPatient() {
+		URL url = this.getClass().getResource("../view/patient/patientView.fxml");
+		try {
+			Parent PatientView = FXMLLoader.load(url);
+			root.setCenter(PatientView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+    public void navToBuidingView() {
+		URL url = this.getClass().getResource(("../view/site/siteView.fxml"));
+		System.out.println(url);
+		try{
+			Parent buildingView = FXMLLoader.load(url);
+			root.setCenter(buildingView);
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+    }
 }

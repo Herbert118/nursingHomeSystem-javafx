@@ -48,7 +48,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="patientView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToPatientView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="patientView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -60,7 +60,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="bedView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToBedView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="bedView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -72,7 +72,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="SpecialView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToSpecialView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="SpecialView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -84,7 +84,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="QuestionView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToQuestionView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="QuestionView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -96,7 +96,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="templateView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToTemplateView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="templateView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -108,7 +108,7 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="BuildingView" textAlignment="CENTER" textFill="#f4eeee">
+            <JFXButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#navToBuildingView" ripplerFill="#16c1df" style="-fx-background-color: #4285f5;" styleClass="testViewBtn" stylesheets="@testMenu.css" text="BuildingView" textAlignment="CENTER" textFill="#f4eeee">
                <effect>
                   <Lighting>
                      <bumpInput>

@@ -45,6 +45,20 @@ public class ObjectInputUtil <T>{
 		
 		}
 	}
+	public ObjectInputUtil(String path,int choice) throws FileNotFoundException {
+		switch(choice) {
+		case SERIALFORMAT:
+			try {
+				ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path)));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			throw new IllegalArgumentException("wrong argument!");
+		
+		}
+	}
 	
 	@SuppressWarnings("unchecked")
 	public T readSerialObject() throws Exception {

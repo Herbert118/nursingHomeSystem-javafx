@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 
-public class User {
+public class User extends Person{
 
 	private StringProperty position;
 	private StringProperty name;

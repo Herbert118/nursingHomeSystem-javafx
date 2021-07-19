@@ -1,31 +1,68 @@
 package com.neuedu.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Building {
+
+public class Building extends Site implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 946323915649344774L;
 	ArrayList<Floor> floorList;
-	
-	public boolean addFloor(Floor floor) {
-		return floorList.add(floor);
+
+
+	public Building(String name, String type, String description) {
+		super(name, "building", description);
+		floorList = new ArrayList<Floor>();
 	}
-	
-	public boolean removeFloor(Floor floor) { 
-		if(floorList.contains(floor)) {
-			return floorList.remove(floor);
+
+	public boolean addFloor(Floor floor) {
+		if(floor == null||floorList.contains(floor)) {
+			return false;
+		}
+		boolean success = floorList.add(floor);
+		
+		if(success){
+			int index = floorList.indexOf(floor);
+			String floorIndex = (index<10?"0":"") +index;
+			floor.setSiteId(this.getSiteId()+floorIndex);
+			floor.setLocation(this.getLocation()+"->"+floor.getName());
+			return true;
 		}
 		else {
 			return false;
 		}
-		
 	}
 	
-	public void getFloor() {
-		
+	public boolean deleteFloor(Floor floor) {
+		if(floorList.contains(floor)) {
+			if(floor.isDeleted()== false){
+				floor.setDeleted(true);
+				return true;
+			}
+		}
+			return false;
+	}
+
+	public boolean deleteFloor(int index) {
+		Floor floor = floorList.get(index);
+		if(floor!= null) {
+			if(floor.isDeleted()==false){
+				floor.setDeleted(true);
+			}
+		}
+			return false;
+
 	}
 	
-	
-	
-	
-	
-	
+	public ArrayList<Floor> getFloorList() {
+		return floorList;
+	}
+	protected void setFloorList(ArrayList<Floor> floorList){
+		this.floorList = floorList;
+	}
 }

@@ -2,7 +2,9 @@ package com.neuedu.view.login;
 
 import com.neuedu.main.Router;
 import com.neuedu.model.Service;
-import com.neuedu.view.login.LoginView;
+import com.neuedu.view.component.Alert;
+
+
 
 public class LoginViewController {
 	private LoginView view;
@@ -22,7 +24,7 @@ public class LoginViewController {
 			String password = view.passwordFld.getText();
 			
 			if (service.checkLogin(name, password)) {
-				view.nameFld.setText("登录成功!");
+				Alert.showAlert("登录成功!");
 			}
 			else {
 				view.nameFld.setText("登录失败!");

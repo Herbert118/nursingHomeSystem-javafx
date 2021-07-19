@@ -2,6 +2,7 @@ package com.neuedu.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class CheckUtil {
     public static boolean checkName(String name){
@@ -46,6 +47,16 @@ public class CheckUtil {
             }
 
             return convertSuccess;
+        }
+    }
+    
+    public static boolean checkBirthDate(LocalDate birthDate){
+        boolean convertSuccess = true;
+        if(birthDate == null){
+            return false;
+        }
+        else {
+        	return birthDate.isBefore(LocalDate.now());
         }
     }
 
@@ -94,4 +105,35 @@ public class CheckUtil {
             return false;
         }
     }
+
+	public static boolean checkDescription(String description) {
+		if(description!= null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+
+	public static boolean checkType(String type) {
+		if(type != null) {
+		if(type.equals("ward")||type.equals("specialRoom")) {
+			return true;
+		}
+		}
+		return false;
+	}
+	public static boolean checkTypeCN(String type) {
+		return type!=null ;
+	}
+
+	public static boolean checkContainNumber(String containNumber) {
+		if(containNumber!=null) {
+			if(containNumber.matches("^[1-9][0-9]*$")) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

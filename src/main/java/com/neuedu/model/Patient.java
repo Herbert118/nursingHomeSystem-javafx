@@ -5,7 +5,11 @@ import javafx.beans.property.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Patient implements Serializable {
+public class Patient extends Person implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9108895701869089028L;
 	private StringProperty name;
     private StringProperty sex;
 	private ObjectProperty<LocalDate> birthDate;
@@ -14,6 +18,20 @@ public class Patient implements Serializable {
     private StringProperty urgentContact;
     private StringProperty urgentPhoneNumber;
     private IntegerProperty age;
+    transient private ObjectProperty<Bed> bed;
+
+    public Bed getBed() {
+        return bed.get();
+    }
+
+    public ObjectProperty<Bed> bedProperty() {
+        return bed;
+    }
+
+    public void setBed(Bed bed) {
+        this.bed.set(bed);
+    }
+
     private boolean deleted;
 
     public boolean isDeleted() {
@@ -31,7 +49,7 @@ public class Patient implements Serializable {
         this.birthDate = new SimpleObjectProperty<LocalDate>(birthDate);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
         this.urgentContact = new SimpleStringProperty(urgentContact);
-        this.urgentPhoneNumber = new SimpleStringProperty(urgentContact);
+        this.urgentPhoneNumber = new SimpleStringProperty(urgentPhoneNumber);
         this.IDNumber = new SimpleStringProperty(IDNumber);
         this.age = new SimpleIntegerProperty();
         this.age.set(LocalDate.now().getYear() - this.getBirthDate().getYear());

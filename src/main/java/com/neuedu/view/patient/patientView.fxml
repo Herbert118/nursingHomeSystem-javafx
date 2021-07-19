@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.patient.patientViewController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="611.0" style="-fx-background-color: #BFEFFF;">
+         <children>
+            <Label text="病患管理">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="searchFld" promptText="搜索..." />
+         </children>
+      </HBox>
+      <TableView fx:id="patientTable" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="姓名" />
+          <TableColumn fx:id="ageCol" prefWidth="75.0" text="年龄" />
+            <TableColumn fx:id="sexCol" prefWidth="75.0" text="性别" />
+            <TableColumn fx:id="phoneNumberCol" prefWidth="75.0" text="联系电话" />
+            <TableColumn fx:id="urgentContactCol" prefWidth="75.0" text="紧急联系人" />
+            <TableColumn fx:id="urgentPhoneNumberCol" prefWidth="75.0" text="紧急联系电话" />
+        </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <JFXButton fx:id="addPaBtn" onAction="#addPatient" text="新增" />
+            <JFXButton fx:id="modPaBtn" onAction="#modifyPatient" text="修改" />
+            <JFXButton fx:id="delPaBtn" onAction="#deletePatient" text="删除" />
+            <JFXButton fx:id="evaPaBtn" onAction="#evalutePatient" text="评估" />
+         </children>
+         <padding>
+            <Insets right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+   </children>
+</VBox>
