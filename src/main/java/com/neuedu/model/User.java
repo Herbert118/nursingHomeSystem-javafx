@@ -18,6 +18,19 @@ public class User extends Person{
 	private ObjectProperty<LocalDate> birthDate;
 	private StringProperty phoneNumber;
 	private boolean deleted;
+	
+	//damn fastjson, you can't do default thing without telling me....
+	public void User() {
+		this.position = new SimpleStringProperty("");
+		this.name = new SimpleStringProperty("");
+		this.password = new SimpleStringProperty("");
+		this.id = new SimpleStringProperty("");
+		this.IDNumber = new SimpleStringProperty("");
+		this.speciality = new SimpleStringProperty("");
+		this.birthDate = new SimpleObjectProperty<LocalDate>(LocalDate.now());
+		this.phoneNumber = new SimpleStringProperty("");
+		this.deleted = false;
+	}
 
 	public User(String position, String name, String password, String id, String IDNumber, String speciality, LocalDate birthDate, String phoneNumber) {
 		this.position = new SimpleStringProperty(position);
@@ -103,7 +116,7 @@ public class User extends Person{
 		this.speciality.set(speciality);
 	}
 
-	public Object getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate.get();
 	}
 

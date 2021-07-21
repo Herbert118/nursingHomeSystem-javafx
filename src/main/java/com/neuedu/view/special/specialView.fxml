@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1500.0" prefWidth="1500.0" styleClass="body" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.special.SpecialViewController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="titleBox">
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+         <children>
+            <Label styleClass="titleLabel" text="特殊房间管理">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="searchFld" onInputMethodTextChanged="#searchSpecialRoom" promptText="搜索..." />
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="specialTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="房间类型" />
+          <TableColumn fx:id="localCol" prefWidth="150.0" text="位置" />
+            <TableColumn fx:id="containNumCol" prefWidth="150.0" text="最大容纳人数" />
+            <TableColumn fx:id="descCol" prefWidth="150.0" text="补充说明" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <JFXButton onAction="#applyForSpec" text="申请" />
+         </children>
+         <padding>
+            <Insets right="50.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

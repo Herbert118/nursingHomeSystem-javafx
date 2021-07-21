@@ -9,9 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1500.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.site.SiteViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1500.0" prefWidth="1500.0" 
+xmlns="http://javafx.com/javafx/16" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.site.SiteViewController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #4285f5;">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass = "titleBox">
          <children>
             <Label text="楼宇管理" textFill="#fffcfc">
                <font>

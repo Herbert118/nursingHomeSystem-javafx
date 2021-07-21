@@ -19,6 +19,10 @@ public class Building extends Site implements Serializable {
 		super(name, "building", description);
 		floorList = new ArrayList<Floor>();
 	}
+	public Building() {
+		super();
+		floorList = new ArrayList<Floor>();
+	}
 
 	public boolean addFloor(Floor floor) {
 		if(floor == null||floorList.contains(floor)) {
@@ -58,11 +62,20 @@ public class Building extends Site implements Serializable {
 			return false;
 
 	}
-	
+	//I have no choice for fastjson
+	public ObservableList<Floor> oFloorList(){
+		ObservableList<Floor> resultList = FXCollections.observableArrayList();
+		for(Floor floor:floorList) {
+			if(floor.isDeleted()== false) {
+				resultList.add(floor);
+			}
+		}
+		return resultList;
+	}
 	public ArrayList<Floor> getFloorList() {
 		return floorList;
 	}
-	protected void setFloorList(ArrayList<Floor> floorList){
+	public void setFloorList(ArrayList<Floor> floorList){
 		this.floorList = floorList;
 	}
 }

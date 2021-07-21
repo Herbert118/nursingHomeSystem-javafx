@@ -18,30 +18,43 @@ public class Patient extends Person implements Serializable{
     private StringProperty urgentContact;
     private StringProperty urgentPhoneNumber;
     private IntegerProperty age;
-    transient private ObjectProperty<Bed> bed;
-
+    private Bed bed;
+    private boolean deleted;
     public Bed getBed() {
-        return bed.get();
-    }
-
-    public ObjectProperty<Bed> bedProperty() {
         return bed;
     }
 
+
     public void setBed(Bed bed) {
-        this.bed.set(bed);
+        this.bed = bed;
     }
 
-    private boolean deleted;
+    
 
     public boolean isDeleted() {
         return deleted;
+    }
+    public boolean getDeleted() {
+    	return deleted;
     }
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
 
+    public Patient() {
+    	this.name = new SimpleStringProperty("");
+        this.sex = new SimpleStringProperty("");
+        this.birthDate = new SimpleObjectProperty<LocalDate>(LocalDate.now());
+        this.phoneNumber = new SimpleStringProperty("");
+        this.urgentContact = new SimpleStringProperty("");
+        this.urgentPhoneNumber = new SimpleStringProperty("");
+        this.IDNumber = new SimpleStringProperty("");
+        this.age = new SimpleIntegerProperty();
+        this.age.set(LocalDate.now().getYear() - this.getBirthDate().getYear());
+        this.deleted = false;
+    }
+    
     public Patient(String name, String sex, LocalDate birthDate ,
                    String IDNumber,String phoneNumber, String urgentContact, String urgentPhoneNumber ) {
         this.name = new SimpleStringProperty(name);
@@ -53,6 +66,7 @@ public class Patient extends Person implements Serializable{
         this.IDNumber = new SimpleStringProperty(IDNumber);
         this.age = new SimpleIntegerProperty();
         this.age.set(LocalDate.now().getYear() - this.getBirthDate().getYear());
+        this.deleted =false;
     }
 
     public LocalDate getBirthDate() {

@@ -52,7 +52,7 @@ public class TestViewController {
 	    @FXML
 	    void navToLoginView(ActionEvent event) {
 	    	System.out.println("click");
-	    	router.navToLogin();
+	    	router.navToLoginView();
 	    }
 
 	    @FXML
@@ -78,7 +78,7 @@ public class TestViewController {
 	    @FXML
 	    void navToPatientView(ActionEvent event) {
 	    	System.out.println("patient");
-	    	router.navToPatient();
+	    	router.navToPatientView();
 	    }
 	    
 	    @FXML

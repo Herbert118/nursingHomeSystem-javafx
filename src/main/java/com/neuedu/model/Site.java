@@ -109,6 +109,15 @@ public abstract class Site implements Serializable {
         this.siteId = new WritableStringProperty("");
         this.type = new WritableStringProperty(type);
         this.description = new WritableStringProperty(description);
+        this.location = new WritableStringProperty("");
+        this.deleted = false;
+    }
+    protected Site(){
+        this.name = new WritableStringProperty("");
+        this.siteId = new WritableStringProperty("");
+        this.type = new WritableStringProperty("");
+        this.description = new WritableStringProperty("");
+        this.location = new WritableStringProperty("");
         this.deleted = false;
     }
 

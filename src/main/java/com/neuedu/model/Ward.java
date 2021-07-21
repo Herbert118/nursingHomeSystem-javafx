@@ -3,13 +3,29 @@ package com.neuedu.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Ward extends Room implements Serializable {
     private ArrayList<Bed> bedList;
     public Ward(String name, String type, String description) {
         super(name, type, description);
         bedList = new ArrayList<Bed>();
     }
-
+    public Ward() {
+    	bedList = new ArrayList<Bed>();
+    }
+    
+    
+    public ObservableList<Bed> oBedList(){
+    	ObservableList<Bed> resultList = FXCollections.observableArrayList();
+    	for(Bed bed:bedList) {
+    		if(bed.isDeleted()==false) {
+    			resultList.add(bed);
+    		}
+    	}
+    	return resultList;
+    }
     public ArrayList<Bed> getBedList() {
         return bedList;
     }

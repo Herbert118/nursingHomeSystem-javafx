@@ -5,6 +5,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class CheckUtil {
+    public static boolean checkNotBlank(String string){
+        if (string!=null){
+            if(!string.isBlank()){
+                return true;
+            }
+        }
+        return false;
+    }
     public static boolean checkName(String name){
         if(name == null){
             return false;

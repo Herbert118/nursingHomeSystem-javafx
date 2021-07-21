@@ -22,16 +22,16 @@ public class SiteTreeTableUtil {
 			
 			if (building.getType().equals("building")) {
 				
-				for (Floor floor : ((Building) building).getFloorList()) {
+				for (Floor floor : ((Building) building).oFloorList()) {
 					TreeItem<Site> floorItem = new TreeItem<Site>(floor);
 					buildingItem.getChildren().add(floorItem);
 					
-					for(Room room: floor.getRoomList()) {
+					for(Room room: floor.oRoomList()) {
 						TreeItem<Site> roomItem = new TreeItem<Site>(room);
 						floorItem.getChildren().add(roomItem);
 						
 						if(room.getType().equals("ward")) {
-							for(Bed bed:((Ward)room).getBedList()) {
+							for(Bed bed:((Ward)room).oBedList()) {
 								TreeItem<Site> bedItem = new TreeItem<Site>(bed);
 								roomItem.getChildren().add(bedItem);
 							}

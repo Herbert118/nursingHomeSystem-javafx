@@ -16,7 +16,14 @@ public class Floor extends Site{
         super(name, "floor", description);
         roomList = new ArrayList<Room>();
     }
-    protected void setRoomList(ArrayList<Room> roomList) {
+    public Floor() {
+    	roomList = new ArrayList<Room>();
+    }
+    
+    public ArrayList<Room> getRoomList() {
+		return roomList;
+	}
+	protected void setRoomList(ArrayList<Room> roomList) {
         this.roomList = roomList;
     }
     public boolean addRoom(Room room){
@@ -41,7 +48,7 @@ public class Floor extends Site{
         }
     }
 
-    public ObservableList<Room> getRoomList(){
+    public ObservableList<Room> oRoomList(){
         ObservableList<Room> resultList = FXCollections.observableArrayList();
         for(Room room : roomList){
             if(!room.isDeleted()){

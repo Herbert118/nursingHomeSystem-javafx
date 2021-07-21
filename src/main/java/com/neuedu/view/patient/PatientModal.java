@@ -9,7 +9,6 @@ import com.neuedu.model.Patient;
 import com.neuedu.model.Service;
 import com.neuedu.util.CheckUtil;
 
-import com.neuedu.view.component.Alert;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,6 +20,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PatientModal {
@@ -38,7 +38,7 @@ public class PatientModal {
     private JFXTextField urgentphoneFld;
     private JFXTextField IDNumberFld;
     private JFXButton confirmButton;
-    private Label warnLabel;
+    private Text warnText;
     public PatientModal(Service service){
         this.service = service;
         init();
@@ -60,7 +60,7 @@ public class PatientModal {
         phoneFld = new JFXTextField();
         IDNumberFld = new JFXTextField();
         confirmButton = new JFXButton("确认");
-        warnLabel = new Label();
+        warnText = new Text();
     }
     private void lay(){
         fieldGridPane.add(new Label("姓名"),0,0);
@@ -85,9 +85,9 @@ public class PatientModal {
         modalRoot.setAlignment(Pos.CENTER);
         
         VBox.setMargin(confirmButton,new Insets(30));
-        modalRoot.getChildren().add(warnLabel);
-        VBox.setMargin(warnLabel, new Insets(30,0,0,0));
-        warnLabel.setTextFill(Color.RED);
+        modalRoot.getChildren().add(warnText);
+        VBox.setMargin(warnText, new Insets(30,0,0,0));
+        warnText.setFill(Color.RED);
 
     }
 
@@ -112,16 +112,17 @@ public class PatientModal {
             }
             else{
                if(service.addPatient(name,sex,birthDate,IDNumber,phoneNumber,urgentContact,urgentPhoneNumber)){
-                   warnLabel.setText("添加成功!");
+                   warnText.setText("添加成功!");
                }
                else{
-                   warnLabel.setText("添加失败!");
+                   warnText.setText("添加失败!");
                 }
                //TODO: better add a check
             }
         });
 
         Scene scene = new Scene(modalRoot);
+        scene.getStylesheets().add("modal.css");
         patientModal.setScene(scene);
         patientModal.setTitle("新增病患");
         patientModal.showAndWait();
@@ -164,14 +165,14 @@ public class PatientModal {
             		
             	
                 if(service.updatePatient(oldPatient,name,sex,birthDate,IDNumber,phoneNumber,urgentContact,urgentPhoneNumber)){
-                   warnLabel.setText("修改成功!");
+                   warnText.setText("修改成功!");
                 }
                 else{
-                    warnLabel.setText("修改失败!");
+                    warnText.setText("修改失败!");
                 }
             	}
             	catch(Exception ex) {
-            		warnLabel.setText("修改失败!");
+            		warnText.setText("修改失败!");
             		ex.printStackTrace();
             	}
 
@@ -179,8 +180,9 @@ public class PatientModal {
         });
 
         Scene scene = new Scene(modalRoot);
+        scene.getStylesheets().add("modal.css");
         patientModal.setScene(scene);
-       // patientModal.setTitle("新增病患");
+        patientModal.setTitle("修改病患");
         //TODO:change here
         patientModal.showAndWait();
     }
@@ -218,7 +220,7 @@ public class PatientModal {
             result = false;
         }
         if(result == false){
-            warnLabel.setText(text+"格式有误");
+            warnText.setText(text+"格式有误");
         }
         return result;
 

@@ -1,0 +1,33 @@
+
+.button{
+	-fx-text-fill:white;
+	-fx-background-color:#4285f5;
+	-fx-padding: 7 20 7 20;
+	-fx-font-size:14;
+}
+
+.body{
+	-fx-background-color:#ffffff;
+	-fx-padding:20,20,20,20;
+}
+
+.table-row-cell {
+    -fx-cell-size: 35;
+    -fx-font-size:14;
+}
+.table-cell{
+	-fx-alignment:CENTER;
+}
+.table-view{
+	-fx-pref-height:400;
+	-fx-max-height:400;
+}
+.label{
+	-fx-text-fill:#4285f5;
+	-fx-font-size:14;
+}
+
+.Rei{
+	-fx-pref-width:300;
+	
+}

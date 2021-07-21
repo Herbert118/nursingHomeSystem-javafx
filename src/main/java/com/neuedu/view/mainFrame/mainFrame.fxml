@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neuedu.view.mainFrame.MainFrameController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="630.0" style="-fx-background-color: #4285f5;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="东软颐养中心" textFill="WHITE" id = "bigTitle">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets right="50.0" />
+               </padding>
+               <children>
+                  <Label fx:id="nameLbl" style="-fx-background-radius: 5;" text="label" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton id="logOutBtn" fx:id="logOutBtn" onAction="#logOut" style="-fx-background-color: white;" styleClass="logoutBtn" text="注销" textFill="#4285f5" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeView fx:id="menuTreeView" maxWidth="1.7976931348623157E308" prefWidth="140.0" VBox.vgrow="ALWAYS">
+               </JFXTreeView>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

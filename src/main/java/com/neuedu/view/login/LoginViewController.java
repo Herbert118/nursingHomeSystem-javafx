@@ -2,6 +2,7 @@ package com.neuedu.view.login;
 
 import com.neuedu.main.Router;
 import com.neuedu.model.Service;
+import com.neuedu.model.User;
 import com.neuedu.view.component.Alert;
 
 
@@ -20,14 +21,14 @@ public class LoginViewController {
 	
 	private void attachEvents() {
 		view.loginBtn.setOnAction(e -> {
-			String name = view.nameFld.getText();
+			String id = view.idFld.getText();
 			String password = view.passwordFld.getText();
-			
-			if (service.checkLogin(name, password)) {
-				Alert.showAlert("登录成功!");
+			User user;
+			if ((user = service.checkLogin(id, password))!=null) {
+				router.initToMenu(user);
 			}
 			else {
-				view.nameFld.setText("登录失败!");
+				Alert.showAlert("登录失败");
 			}
 			
 		});

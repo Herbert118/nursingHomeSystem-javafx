@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SiteModal {
@@ -30,7 +31,7 @@ public class SiteModal {
     
     private JFXTextField containNumFld;
     private JFXButton confirmButton;
-    private Label warnLabel;
+    private Text warnText;
     private Site parent;
     public SiteModal(Service service,Site parent){
         this.service = service;
@@ -47,7 +48,7 @@ public class SiteModal {
         descFld = new JFXTextField();
         containNumFld = new JFXTextField();
         confirmButton = new JFXButton("确认");
-        warnLabel = new Label();
+        warnText = new Text();
     }
     private void lay(){
         fieldGridPane.add(new Label("名称"),0,0);
@@ -74,7 +75,7 @@ public class SiteModal {
         	typeBox.getItems().add("病房");
         	typeBox.getItems().add("特殊房间");
         	fieldGridPane.add(label, 0, 3);
-        	fieldGridPane.add(containNumFld, 1, 0);
+        	fieldGridPane.add(containNumFld, 1, 3);
         	label.visibleProperty().bind(typeBox.valueProperty().isEqualTo("特殊房间"));
         	containNumFld.visibleProperty().bind(typeBox.valueProperty().isEqualTo("特殊房间"));
         	break;
@@ -97,9 +98,9 @@ public class SiteModal {
         modalRoot.setAlignment(Pos.CENTER);
         
         VBox.setMargin(confirmButton,new Insets(30));
-        modalRoot.getChildren().add(warnLabel);
-        VBox.setMargin(warnLabel, new Insets(30,0,0,0));
-        warnLabel.setTextFill(Color.RED);
+        modalRoot.getChildren().add(warnText);
+        VBox.setMargin(warnText, new Insets(30,0,0,0));
+        warnText.setFill(Color.RED);
 
     }
 
@@ -116,10 +117,10 @@ public class SiteModal {
             	else {
             		boolean success = service.addSpecialRoom((Floor)parent, name, description, Integer.parseInt(containNum));
             		if(success) {
-            			warnLabel.setText("添加成功!");
+            			warnText.setText("添加成功!");
             		}
             		else {
-            			warnLabel.setText("添加失败!");
+            			warnText.setText("添加失败!");
             		}
             	}
             	
@@ -147,10 +148,10 @@ public class SiteModal {
                 	throw new IllegalArgumentException("wrong argument!");
                 }
             	if(success) {
-            		warnLabel.setText("新增成功");
+            		warnText.setText("新增成功");
             	}
             	else {
-            		warnLabel.setText("新增失败");
+            		warnText.setText("新增失败");
             	}
             }
             
@@ -158,8 +159,9 @@ public class SiteModal {
         });
 
         Scene scene = new Scene(modalRoot);
+        scene.getStylesheets().add("modal.css");
         siteModal.setScene(scene);
-        siteModal.setTitle("新增病患");
+        siteModal.setTitle("新增地点");
         siteModal.showAndWait();
     }
     
@@ -185,7 +187,7 @@ public class SiteModal {
             result = false;
         }
         if(result == false){
-            warnLabel.setText(text+"格式有误");
+            warnText.setText(text+"格式有误");
         }
         return result;
 

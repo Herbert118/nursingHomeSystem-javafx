@@ -9,10 +9,11 @@ public class Bed extends Site{
 	 * 
 	 */
 	private static final long serialVersionUID = 7495446426670326572L;
-	private Patient patient;
+	transient private Patient patient;
 	private LocalDate startDate;
 	private LocalDate endDate;
 
+	
     public LocalDate getStartDate() {
         return startDate;
     }

@@ -14,9 +14,10 @@ public class MainApp extends Application{
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		Router router = Router.getInstance(this);
-		router.initToTestRoot();
+		router.navToLoginView();
+		
 		Service service = Service.getInstance();
-		primaryStage.show();
+		
 		primaryStage.setResizable(false);
 		primaryStage.setOnCloseRequest(e ->{
 			service.save();
@@ -29,5 +30,6 @@ public class MainApp extends Application{
 	
 	public void setStageScene(Scene newScene) {
 		this.primaryStage.setScene(newScene);
+		primaryStage.show();
 	}
 }

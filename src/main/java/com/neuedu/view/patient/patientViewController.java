@@ -3,8 +3,10 @@ package com.neuedu.view.patient;
 import com.jfoenix.controls.JFXButton;
 import com.neuedu.model.Patient;
 import com.neuedu.model.Service;
-
+import com.neuedu.model.Template;
 import com.neuedu.view.component.Alert;
+
+import com.neuedu.view.component.ConfirmAlert;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -118,6 +120,13 @@ public class patientViewController {
 	void deletePatient(ActionEvent event) {
 
 		String mes = "";
+		if(tsm.getSelectedItems().isEmpty()){
+			Alert.showAlert("请先选择一个病人!");
+			return;
+		}
+		if (!ConfirmAlert.getConfirm("您确定要删除吗?")) {
+			return;
+		}
 		for (Patient patient : tsm.getSelectedItems()) {
 			if (service.deletePatient(patient)) {
 				mes += patient.getName() + "已被删除";
@@ -127,10 +136,24 @@ public class patientViewController {
 			}
 		}
 		Alert.showAlert(mes);
+		patientTable.setItems(service.getPatientList());
 	}
 
 	@FXML
 	void evalutePatient(ActionEvent event) {
+		Patient patient = tsm.getSelectedItem();
+		if(patient == null) {
+			Alert.showAlert("请先选择一个病人！");
+			return;
+		}
+		ChooseTemModal modal1 = new ChooseTemModal(service);
+		Template template = modal1.chooseTem();
+		if(template == null) {
+			Alert.showAlert("您并未选择模板");
+			return;
+		}
+		EvaluateModal modal2 = new EvaluateModal(template);
+		modal2.evaluate();
 
 	}
 
@@ -145,6 +168,7 @@ public class patientViewController {
 			PatientModal updateModal = new PatientModal(service);
 			updateModal.updatePatient(selectedList.get(0));
 			patientList = service.getPatientList();
+			patientTable.setItems(patientList);
 		}
 	}
 

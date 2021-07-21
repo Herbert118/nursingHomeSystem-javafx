@@ -1,0 +1,59 @@
+.tree-cell{
+	-fx-text-fill: #4285f5;
+	-fx-font-size:16;
+	-fx-font-family:Microsoft YaHei;
+}
+.tree-cell:selected{
+	-fx-text-fill:white;
+	-fx-background:#4285f5;
+	/*bro , what a good luck*/
+}
+.button{
+	-fx-text-fill:white;
+	-fx-background-color:#4285f5;
+	-fx-padding: 7 20 7 20;
+	-fx-font-size:14;
+}
+
+.body{
+	-fx-background-color:#ffffff;
+	-fx-padding:20,20,20,20;
+}
+
+.titleBox .label{
+	-fx-font-size:18;
+	-fx-text-fill:#4285f5;
+	-fx-border-style:solid;
+	-fx-border-width: 0 0 2 0;
+	-fx-border-color:#4285f5;
+	-fx-padding:0 20 0 20;
+}
+
+#logOutBtn{
+	-fx-background-color:#ffffff;
+	-fx-text-fill:#4285f5;
+}
+
+.table-row-cell {
+    -fx-cell-size: 35;
+    -fx-font-size:14;
+}
+.table-cell{
+	-fx-alignment:CENTER;
+}
+.table-view{
+	-fx-pref-height:500;
+}
+.tree-table-cell{
+	-fx-font-size:14;
+}
+
+.label{
+	-fx-text-fill:#4285f5;
+	-fx-font-size:14;
+}
+
+#bigTitle{
+	-fx-text-fill:#ffffff;
+	-fx-font-size:18;
+	}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1500.0" prefWidth="1500.0" styleClass="body" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="titleBox">
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+         <children>
+            <Label fx:id="title" styleClass="titleLabel" text="管理员">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="searchFld" onInputMethodTextChanged="#searchStaff" promptText="搜索..." />
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="75.0" text="登录名" />
+          <TableColumn fx:id="nameCol" prefWidth="100.0" text="姓名" />
+            <TableColumn fx:id="positionCol" prefWidth="75.0" text="职称" />
+            <TableColumn fx:id="birthDateCol" prefWidth="75.0" text="出生日期" />
+            <TableColumn fx:id="specialityCol" prefWidth="75.0" text="专长" />
+            <TableColumn fx:id="IDNumberCol" prefWidth="200.0" text="身份证" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <JFXButton onAction="#addStaff" text="新增" />
+            <JFXButton onAction="#updateStaff" text="修改" />
+            <JFXButton onAction="#deleteStaff" text="删除" />
+         </children>
+         <padding>
+            <Insets right="50.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

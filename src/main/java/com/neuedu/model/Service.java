@@ -25,14 +25,14 @@ public class Service {
 	}
 
 //职工管理********************************************************
-	public boolean checkLogin(String id, String password) {
+	public User checkLogin(String id, String password) {
 		User user = db.getUserById(id);
 		if(user!=null) {
 			if(user.getPassword().equals(password)) {
-				return true;
+				return user;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	public boolean addUser(String id,String password ){
@@ -43,6 +43,18 @@ public class Service {
 			return false;
 		}
 	}
+	
+	public boolean addUser(String position, String name, String password, String id, String IDNumber, String speciality, LocalDate birthDate, String phoneNumber ){
+		if(checkUserInfo(position,name,password,id,IDNumber,speciality,birthDate,phoneNumber)){
+			User newUser = new User(position,name,password,id,IDNumber,speciality,birthDate,phoneNumber);
+			return this.addUser(newUser);
+		}
+		else{
+			throw new IllegalArgumentException("user argument is wrong!");
+		}
+
+	}
+	
 	public boolean addUser(User user) {
 		if (user != null) {
 			return db.addUser(user);
@@ -61,9 +73,8 @@ public class Service {
 	}
 
 	public boolean updateUser(User oldUser, User newUser){
-		int index = db.getIndexOfUser(oldUser);
-		if(index != -1){
-			return this.updateUser(index,newUser);
+		if(oldUser!=null){
+			return db.updateUser(oldUser,newUser);
 		}
 		else {
 			return true;
@@ -83,9 +94,9 @@ public class Service {
 		}
 
 	}
-	public boolean deleteUser(Patient patient){
-		if(patient != null){
-			return db.deletePatient(patient);
+	public boolean deleteUser(User user){
+		if(user != null){
+			return db.deleteUser(user);
 		}else {
 			return false;
 		}
@@ -103,7 +114,15 @@ public class Service {
 								 String speciality, LocalDate birthDate, String phoneNumber){
 		return CheckUtil.checkPosition(position)&&CheckUtil.checkName(name)&&CheckUtil.checkId(id)
 				&&CheckUtil.checkIDNumber(IDNumber)&&CheckUtil.checkSpeciality(speciality)
-				&&CheckUtil.checkBirthDate(birthDate.toString())&&CheckUtil.checkPhoneNumber(phoneNumber);
+				&&CheckUtil.checkBirthDate(birthDate)&&CheckUtil.checkPhoneNumber(phoneNumber);
+	}
+	
+	public ObservableList<User> getStaffList(String position){
+		if(position == null) {
+			throw new IllegalArgumentException("null argument!");
+		}
+		return db.getUserByPosition(position);
+		
 	}
 	//职工管理*******************************************************
 
@@ -263,14 +282,14 @@ public class Service {
 	
 	public boolean deleteBuilding(Building building) {
 		//TODO:add check here
-		if(building.getFloorList().size()== 0) {
+		if(building.oFloorList().size()== 0) {
 			return db.deleteSite(building);
 		}
 		return false;
 	}
 	
 	public boolean deleteFloor(Floor floor) {
-		if(floor.getRoomList().size()==0) {
+		if(floor.oRoomList().size()==0) {
 			return db.deleteSite(floor);
 		}
 		return false;
@@ -278,7 +297,7 @@ public class Service {
 	
 	public boolean deleteRoom(Room room) {
 		if(room instanceof Ward) {
-			if(((Ward)room).getBedList().size()==0) {
+			if(((Ward)room).oBedList().size()==0) {
 				return db.deleteSite(room);
 			}
 			else {
@@ -349,7 +368,144 @@ public class Service {
 		return db.getSpecialRoomList();
 	}
 	public Duration apply(SpecialRoom specialRoom, Person person, Duration duration){
+		if(specialRoom==null||person == null|| duration == null){
+			throw new IllegalArgumentException("null argument!");
+		}
 		return db.apply(specialRoom,person,duration);
 	}
 
+	
+	
+	
+	
+	
+//问题管理与模板管理*******************************************************************************
+	public boolean addQuestion(Question question){
+		if(question ==null){
+			return false;
+		}
+		return db.addQuestion(question);
+	}
+	
+	public boolean addQuestion(String stem,String form, String choiceA, String choiceB, String choiceC) {
+		//TODO:add check here
+		return this.addQuestion(new Question(stem,form,choiceA,choiceB,choiceC));
+		
+	}
+
+	public boolean deleteQuestion(Question question){
+		if(question == null){
+			return false;
+		}
+		return db.deleteQuestion(question);
+	}
+
+	public ObservableList<Question> searchQuestion(String info){
+		if(info == null){
+			throw new IllegalArgumentException("null argument");
+		}
+		return db.searchQuestion(info);
+	}
+
+	public ObservableList<Question> getQuestionList(){
+		return db.getQuestionList();
+	}
+
+	public boolean updateQuestion(Question oldQuestion, Question newQuestion){
+		if(oldQuestion==null||newQuestion==null){
+			return false;
+		}
+		else{
+			return db.updateQuestion(oldQuestion,newQuestion);
+		}
+	}
+
+	public boolean addTemplate(Template template){
+		if (template ==null){
+			return false;
+		}
+		else{
+			return db.addTemplate(template);
+		}
+	}
+
+	public boolean addTemplate(String name, String temType){
+		//TODO:add check here
+		return db.addTemplate(new Template(name,temType));
+	}
+	public boolean deleteTemplate(Template template){
+		if(template == null){
+			return false;
+		}
+		else{
+			return db.deleteTemplate(template);
+		}
+	}
+	public ObservableList<Template> searchTemplate(String info){
+		if(info==null){
+			throw new IllegalArgumentException("null argument!");
+		}
+		return db.searchTemplate(info);
+	}
+
+	public ObservableList<Template> getTemplateList(){
+
+		return db.getTemplateList();
+	}
+	public boolean updateTemplate(Template oldTemplate, Template newTemplate){
+		if(oldTemplate==null||newTemplate==null){
+			return false;
+		}
+		else {
+			return db.updateTemplate(oldTemplate,newTemplate);
+		}
+	}
+
+	public boolean addQuestionToTem(Template template,Question question){
+		if(template == null|| question == null){
+			return false;
+		}
+		else {
+			return db.addQuestionToTem(template,question);
+		}
+	}
+	public boolean removeQuestionFromTem(Template template, Question question){
+		if(template == null||question==null){
+			return false;
+		}
+		else{
+			return db.removeQuestionFormTem(template,question);
+		}
+	}
+
+
+	public boolean updateQuestion(Question oldQuestion, String stem, String form, String choiceA, String choiceB, String choiceC) {
+		//TODO:add better check
+		if(CheckUtil.checkNotBlank(stem)&&CheckUtil.checkNotBlank(form)&&CheckUtil.checkNotBlank(choiceA)
+				&&CheckUtil.checkNotBlank(choiceB)&&CheckUtil.checkNotBlank(choiceC)){
+			return this.updateQuestion(oldQuestion,new Question(stem,form,choiceA,choiceB,choiceC));
+
+		}
+		return false;
+	}
+
+	public ObservableList<SpecialRoom> searchSpecialRoom(String info) {
+		if(info == null){
+			throw new IllegalArgumentException("null argument");
+		}
+		return db.searchSpecialRoom(info);
+	}
+
+	public ObservableList<User> searchUser(String t1) {
+		return db.searchUser(t1);
+	}
+
+	public boolean updateTemplate(Template oldTemplate, String stem, String form) {
+		if(CheckUtil.checkNotBlank(stem)&&CheckUtil.checkNotBlank(form)) {
+		return  this.updateTemplate(oldTemplate,new Template(stem,form));
+				}
+		else {
+			return false;
+		}
+	}
 }
