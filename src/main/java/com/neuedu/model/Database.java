@@ -10,13 +10,33 @@ import com.neuedu.util.ObjectOutputUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * @author 刘海波
+ *	@description 单例， 负责存储各个model信息， 读写文件，并进行基本CRUD ，下以User为例
+ */
+/**
+ * @author 刘海波
+ *
+ */
+/**
+ * @author 刘海波
+ *
+ */
+/**
+ * @author 刘海波
+ *
+ */
+/**
+ * @author 刘海波
+ *
+ */
 public class Database {
 	private static Database db;
-	private ObservableList<User> userList;
-	private ObservableList<Patient> patientList;
-	private ObservableList<Building> buildingList;
-	private ObservableList<Template> templateList;
-	private ObservableList<Question> questionList;
+	private ObservableList<User> userList;//职工集合
+	private ObservableList<Patient> patientList;//病人集合
+	private ObservableList<Building> buildingList;//楼房集合
+	private ObservableList<Template> templateList;//模板集合
+	private ObservableList<Question> questionList;//问题集合
 
 	private Database() {
 		loadFile();
@@ -55,11 +75,11 @@ public class Database {
 					ObjectInputUtil.JSONFORMAT);
 			templateList = FXCollections.<Template>observableArrayList();
 			templateList.addAll(oiu5.readJsonArrayList());
-			// TODO: reunion patient with bed and reunion question and template in case of
-			// bad thing
+			// TODO: reunion patient with bed and reunion question and template in case of bad thing
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			//检查是否读取成功，没则创建，基本的用例
 			if (userList == null) {
 				userList = FXCollections.<User>observableArrayList();
 				userList.add(new User("Admin", "Admin", "Admin"));
@@ -121,10 +141,10 @@ public class Database {
 
 	private void reunionBed() {
 		for (Patient patient : patientList) {
-			System.out.println("here");
+			;
 			if (patient.isDeleted() == false&&patient.getBed()!=null) {
 				for (Bed bed : this.getAllBedList()) {
-					System.out.println("here");
+					;
 					if(patient.getBed().equals(bed)) {
 						//TODO:solve the matter of reunion
 						patient.setBed(bed);
@@ -149,7 +169,7 @@ public class Database {
 		try {
 			oou1.writeJsonObject(new ArrayList<User>(userList));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -159,18 +179,21 @@ public class Database {
 		try {
 			oou2.writeJsonObject(new ArrayList<Patient>(patientList));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * @description 采用序列化而非json的原因是， fastJson 对 Room的继承关系无法解析
+	 */
 	public void saveBuildingFile() {
 		ObjectOutputUtil<ArrayList<Building>> oou3 = new ObjectOutputUtil<>("buildings.ser",
 				ObjectOutputUtil.SERIALFORMAT);
 		try {
 			oou3.writeSerialObject(new ArrayList<Building>(buildingList));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -181,7 +204,7 @@ public class Database {
 		try {
 			oou4.writeJsonObject(new ArrayList<Question>(questionList));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -192,7 +215,7 @@ public class Database {
 		try {
 			oou5.writeJsonObject(new ArrayList<Template>(templateList));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -200,6 +223,11 @@ public class Database {
 	// 文件读写***************************************************************
 
 	// 用户管理*******************************************************************
+	
+	/**
+	 * @param user
+	 * @return 新增用户, 如果列表中存在相同用户则返回false，同时 ， User的hashCode和equals已被重写
+	 */
 	public boolean addUser(User user) {
 		if(userList.contains(user)) {
 			return false;
@@ -207,6 +235,10 @@ public class Database {
 		return userList.add(user);
 	}
 
+	
+	/**
+	 * @return 获取所有“未被删除的” user
+	 */
 	protected final ObservableList<User> getUserList() {
 		ObservableList<User> resultList = FXCollections.observableArrayList();
 		for (User user : userList) {
@@ -216,7 +248,27 @@ public class Database {
 		}
 		return resultList;
 	}
+	
+	/**
+	 * @param user
+	 * @return 删除用户， 若userList中“不包含”该用户（比如该用户的deleted为true），则返回false
+	 */
+	public boolean deleteUser(User user) {
+		if(!userList.contains(user)){
+			return false;
+		}
+		else {
+			user.setDeleted(true);
+			return true;
+		}
 
+	}
+
+	
+	/**
+	 * @param id
+	 * @return 传入id， 返回对应的User， 若用户不存在， 则返回null
+	 */
 	public User getUserById(String id) {
 		for (User user : userList) {
 			if (user.getId().equals(id) && !user.isDeleted()) {
@@ -226,6 +278,10 @@ public class Database {
 		return null;
 	}
 
+	/**
+	 * @param position
+	 * @return 根据职位筛选用户
+	 */
 	public ObservableList<User> getUserByPosition(String position) {
 		ObservableList<User> resultList = FXCollections.observableArrayList();
 		for (User user : userList) {
@@ -235,11 +291,11 @@ public class Database {
 		}
 		return resultList;
 	}
-
+	
 	public ObservableList<User> searchUser(String info) {
 		return this.searchUser(this.userList, info);
 	}
-
+	
 	public ObservableList<User> searchUser(ObservableList<User> userList, String info) {
 		ObservableList<User> resultList = FXCollections.<User>observableArrayList();
 
@@ -489,6 +545,26 @@ public class Database {
 		}
 		return resultList;
 	}
+	public ObservableList<SpecialRoom> searchSpecialRoom(String info) {
+		ObservableList<SpecialRoom> resultList = FXCollections.observableArrayList();
+		for (SpecialRoom specialRoom : this.getSpecialRoomList()) {
+			if (specialRoom.isDeleted() == false) {
+				if (specialRoom.getName().contains(info)) {
+					resultList.add(specialRoom);
+				} else if (specialRoom.getLocation().contains(info)) {
+
+				} else if (specialRoom.getSiteId().contains(info)) {
+					resultList.add(specialRoom);
+				}else if (specialRoom.getDescription().contains(info)) {
+					resultList.add(specialRoom);
+				}else if (specialRoom.getType().contains(info)) {
+					resultList.add(specialRoom);
+				}
+
+			}
+		}
+		return resultList;
+    }
 
 	public Duration apply(SpecialRoom specialRoom, Person person, Duration duration) {
 		return specialRoom.apply(person, duration);
@@ -608,6 +684,7 @@ public class Database {
 		if (!templateList.contains(oldTemplate)) {
 			return false;
 		} else {
+			newTemplate.setId(oldTemplate.getId());//a bug fixed
 			return this.updateTemplate(templateList.indexOf(oldTemplate), newTemplate);
 		}
 	}
@@ -621,6 +698,7 @@ public class Database {
 		return template.removeQuestion(question);
 	}
 
+	
 	public ObservableList<Template> getTemplateList() {
 		ObservableList<Template> resultList = FXCollections.observableArrayList();
 		for (Template template : templateList) {
@@ -631,35 +709,7 @@ public class Database {
 		return resultList;
 	}
 
-    public ObservableList<SpecialRoom> searchSpecialRoom(String info) {
-		ObservableList<SpecialRoom> resultList = FXCollections.observableArrayList();
-		for (SpecialRoom specialRoom : this.getSpecialRoomList()) {
-			if (specialRoom.isDeleted() == false) {
-				if (specialRoom.getName().contains(info)) {
-					resultList.add(specialRoom);
-				} else if (specialRoom.getLocation().contains(info)) {
+    
 
-				} else if (specialRoom.getSiteId().contains(info)) {
-					resultList.add(specialRoom);
-				}else if (specialRoom.getDescription().contains(info)) {
-					resultList.add(specialRoom);
-				}else if (specialRoom.getType().contains(info)) {
-					resultList.add(specialRoom);
-				}
 
-			}
-		}
-		return resultList;
-    }
-
-	public boolean deleteUser(User user) {
-		if(!userList.contains(user)){
-			return false;
-		}
-		else {
-			user.setDeleted(true);
-			return true;
-		}
-
-	}
 }

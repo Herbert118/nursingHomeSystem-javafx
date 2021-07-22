@@ -50,7 +50,7 @@ class ObjectOutputUtilTest {
 		try {
 			oou2.writeJsonObject("helloworld");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		String line = reader.readLine();

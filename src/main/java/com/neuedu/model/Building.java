@@ -7,10 +7,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
+/**
+ * @author 刘海波
+ * @description 
+ */
 public class Building extends Site implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 946323915649344774L;
 	ArrayList<Floor> floorList;
 

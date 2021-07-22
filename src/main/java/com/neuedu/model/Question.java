@@ -8,7 +8,11 @@ public class Question {
     private WritableStringProperty stem;
     private WritableStringProperty form;
     private WritableStringProperty id;
-
+    private WritableStringProperty choiceA;
+    private WritableStringProperty choiceB;
+    private WritableStringProperty choiceC;
+    private boolean deleted;
+    //TODO:maybe it can be better? try not rely on TableView
     public String getId() {
         return id.get();
     }
@@ -20,12 +24,6 @@ public class Question {
     public void setId(String id) {
         this.id.set(id);
     }
-    private WritableStringProperty choiceA;
-    private WritableStringProperty choiceB;
-    private WritableStringProperty choiceC;
-    private boolean deleted;
-    //TODO:maybe it can be better? try not rely on TableView
-
 
     public boolean isDeleted() {
         return deleted;
@@ -48,12 +46,13 @@ public class Question {
     protected Question(String stem,String form, String choiceA, String choiceB, String choiceC) {
         this.stem = new WritableStringProperty(stem);
         this.form = new WritableStringProperty(form);
-        this.choiceA = new WritableStringProperty("A "+choiceA);
-        this.choiceB = new WritableStringProperty("B"+choiceB);
-        this.choiceC = new WritableStringProperty("C"+choiceC);
+        this.choiceA = new WritableStringProperty(choiceA);
+        this.choiceB = new WritableStringProperty(choiceB);
+        this.choiceC = new WritableStringProperty(choiceC);
         this.id = new WritableStringProperty("");
         this.deleted =false;
     }
+    
 
 
     public String getStem() {

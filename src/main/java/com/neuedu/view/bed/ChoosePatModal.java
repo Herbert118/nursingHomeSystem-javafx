@@ -104,6 +104,12 @@ public class ChoosePatModal {
 
             if(patient == null){
                 Alert.showAlert("请先选择一个病人");
+                return;
+            }
+            if(startTime.isAfter(endTime)) {
+            	Alert.showAlert("时间有误!");
+            	return;
+            	
             }
 
                 boolean success = service.moveIn(bed,patient,startTime,endTime);

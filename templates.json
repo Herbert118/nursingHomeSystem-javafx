@@ -1,1 +1,1 @@
-[{"deleted":false,"id":"","name":"goodTemplate","questionList":[],"temType":"good"},{"deleted":false,"id":"01","name":"1","questionList":[],"temType":"2"}]
+[{"deleted":false,"id":"","name":"goodTemplate","questionList":[],"temType":"good"},{"deleted":false,"id":"01","name":"1","questionList":[],"temType":"2"},{"deleted":false,"id":"02","name":"问好","questionList":[{"choiceA":"好","choiceB":"好","choiceC":"好","deleted":false,"form":"A","id":"02","stem":"你还好吗?"}],"temType":"A"}]

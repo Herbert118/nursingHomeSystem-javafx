@@ -207,7 +207,7 @@ public class bedViewController {
 		ChoosePatModal modal = new ChoosePatModal(bed, service);
 		modal.moveIn();
 		// TODO: solve the matter of change
-		// bedTable.setItems(service.getAllBedList());
+		this.initTable();
 		Router.getInstance().navToBedView();
 	}
 

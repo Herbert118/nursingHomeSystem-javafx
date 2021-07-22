@@ -7,11 +7,14 @@ import java.io.Serializable;
 
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * @author 刘海波
+ * @description 对javaFX的property的继承， 使之能够序列化
+ * 
+ */
 public class WritableStringProperty extends SimpleStringProperty implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -6256090384909621242L;
 	public WritableStringProperty(String string) {
 		super(string);

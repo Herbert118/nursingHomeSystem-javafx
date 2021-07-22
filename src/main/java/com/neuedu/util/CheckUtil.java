@@ -4,6 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
+/**
+ * @author 刘海波
+ * @description 工具类， 封装了各种检验方法，用正则表达式来来检验
+ *
+ */
 public class CheckUtil {
     public static boolean checkNotBlank(String string){
         if (string!=null){

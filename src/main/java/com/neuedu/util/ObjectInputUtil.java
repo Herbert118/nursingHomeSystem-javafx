@@ -15,7 +15,7 @@ import javafx.collections.ObservableList;
 
 /**
  * @author 刘海波
- *
+ * @description 工具类，封装了json格式和serialization两种读取方法
  * @param <T>
  * 
  * TODO:泛型的实现显然是不够好的, 待改进
@@ -109,7 +109,7 @@ public class ObjectInputUtil <T>{
 		try {
 		  line = reader.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return line;

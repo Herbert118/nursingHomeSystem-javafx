@@ -23,6 +23,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * @author 刘海波
+ *@description 主菜单框架, 用于调用router的跳转
+ */
 public class MainFrameController {
 	@FXML
     private ResourceBundle resources;
@@ -58,7 +62,7 @@ public class MainFrameController {
     }
     public void setUser(User user){
         this.user =user;
-        this.nameLbl.setText(user.getName());;
+        
     }
     private void check() {
     	assert nameLbl != null : "fx:id=\"nameLb\" was not injected: check your FXML file 'mainFrame.fxml'.";
@@ -74,9 +78,8 @@ public class MainFrameController {
     	TreeItem<String> evaluManNode = new TreeItem<String>("评估管理");
     	TreeItem<String> buildManNode = new TreeItem<String>("楼宇管理");
 
-    	TreeItem<String> staffManNode = new TreeItem<String>("职工管理");
     	
-    	rootNode.getChildren().addAll(userManNode,evaluManNode,buildManNode,staffManNode);
+    	rootNode.getChildren().addAll(userManNode,evaluManNode,buildManNode);
 
     	TreeItem<String> patientManNode = new TreeItem<>("病患管理");
     	TreeItem<String> bedManNode = new TreeItem<>("床位管理");
@@ -95,13 +98,26 @@ public class MainFrameController {
     	TreeItem<String> nurseManNode = new TreeItem<>("护士管理");
     	TreeItem<String> nurWorkerManNode = new TreeItem<>("护工管理");
 
-    	staffManNode.getChildren().addAll(docManNode,nurseManNode,nurWorkerManNode);
+    	if(user.getPosition().equals("Admin")) {
+        	TreeItem<String> staffManNode = new TreeItem<String>("职工管理");
+        	rootNode.getChildren().add(staffManNode);
+        	staffManNode.getChildren().addAll(docManNode,nurseManNode,nurWorkerManNode);
+        	}
+    	
 
     	menuTreeView.setRoot(rootNode);
     	menuTreeView.setShowRoot(false);
     	menuTreeView.addEventHandler(MouseEvent.MOUSE_CLICKED, this::handleMouseClicked);
+    	
+    	this.nameLbl.setText(user.getName());;
     }
     
+    
+    
+    /**
+     * @param event
+     * @description 处理点击事件, 根据对应的cell进行跳转
+     */
     private void handleMouseClicked(MouseEvent event) {
         Node node = event.getPickResult().getIntersectedNode();
         // Accept clicks only on node cells, and not on empty spaces of the TreeView

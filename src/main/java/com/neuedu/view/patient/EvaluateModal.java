@@ -12,6 +12,7 @@ import com.neuedu.view.component.Alert;
 
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Toggle;
@@ -70,16 +71,20 @@ public class EvaluateModal {
 			quesGridPane.add(radioA, 0, 1);
 			quesGridPane.add(radioB, 0, 2);
 			quesGridPane.add(radioC, 0, 3);
-			quesGridPane.setPadding(new Insets(30));
-			quesGridPane.setVgap(20);
+			quesGridPane.setPadding(new Insets(50));
+			quesGridPane.setVgap(15);
 			quesVBox.getChildren().add(quesGridPane);
 			
 		}
 		pane.setContent(quesVBox);
+		pane.setPadding(new Insets(20));
 		quesVBox.setMaxHeight(Double.MAX_VALUE);
+		modalRoot.setAlignment(Pos.CENTER);
 		modalRoot.getChildren().addAll(pane,confirmBtn,mesText);
+		VBox.setMargin(mesText, new Insets(30));
 		
-		Scene scene = new Scene(modalRoot);
+		
+		Scene scene = new Scene(modalRoot,300,300);
 		scene.getStylesheets().add("modal.css");
 		evaluateModal.setScene(scene);
 	}

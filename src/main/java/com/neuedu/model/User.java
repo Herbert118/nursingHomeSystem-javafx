@@ -43,7 +43,17 @@ public class User extends Person{
 		this.phoneNumber = new SimpleStringProperty(phoneNumber);
 		this.deleted = false;
 	}
-
+	public User( boolean deleted,String position, String name, String password, String id, String IDNumber, String speciality, LocalDate birthDate, String phoneNumber) {
+		this.position = new SimpleStringProperty(position);
+		this.name = new SimpleStringProperty(name);
+		this.password = new SimpleStringProperty(password);
+		this.id = new SimpleStringProperty(id);
+		this.IDNumber = new SimpleStringProperty(IDNumber);
+		this.speciality = new SimpleStringProperty(speciality);
+		this.birthDate = new SimpleObjectProperty<LocalDate>(birthDate);
+		this.phoneNumber = new SimpleStringProperty(phoneNumber);
+		this.deleted = deleted;
+	}
 
 	public User(String id, String password) {
 		this.id =  new SimpleStringProperty(id);

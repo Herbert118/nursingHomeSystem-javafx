@@ -10,6 +10,10 @@ import com.neuedu.model.Ward;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
+/**
+ * @author 刘海波
+ * @description 工具类, 将buildingList转化为TreeView， 不具备泛用性
+ */
 public class SiteTreeTableUtil {
 	public static TreeItem<Site> parseRootItem(ObservableList<? extends Site> buildingList) {
 		Building theBuilding = new Building("东软颐养中心","","好地方!");

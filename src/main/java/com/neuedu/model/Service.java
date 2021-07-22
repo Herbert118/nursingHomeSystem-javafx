@@ -7,6 +7,11 @@ import javafx.collections.ObservableList;
 import java.time.Duration;
 import java.time.LocalDate;
 
+/**
+ * @author 刘海波
+ * @description 单例， 对Database的CRUD进行了封装，加入了校验
+ */
+
 public class Service {
 	private final Database db;
 	private static Service service;
@@ -25,6 +30,12 @@ public class Service {
 	}
 
 //职工管理********************************************************
+	
+	/**
+	 * @param id
+	 * @param password
+	 * @return 通过id和password判断登录结果, 失败返回false
+	 */
 	public User checkLogin(String id, String password) {
 		User user = db.getUserById(id);
 		if(user!=null) {
@@ -117,11 +128,23 @@ public class Service {
 				&&CheckUtil.checkBirthDate(birthDate)&&CheckUtil.checkPhoneNumber(phoneNumber);
 	}
 	
+	
+	/**
+	 * @param position
+	 * @return 返回对应职位的员工集合
+	 */
 	public ObservableList<User> getStaffList(String position){
 		if(position == null) {
 			throw new IllegalArgumentException("null argument!");
 		}
 		return db.getUserByPosition(position);
+		
+	}
+	public ObservableList<User> searchUser(String t1) {
+		return db.searchUser(t1);
+	}
+	public ObservableList<User> searchUser(ObservableList<User> staffList, String t1) {
+		return db.searchUser(staffList, t1);
 		
 	}
 	//职工管理*******************************************************
@@ -496,9 +519,7 @@ public class Service {
 		return db.searchSpecialRoom(info);
 	}
 
-	public ObservableList<User> searchUser(String t1) {
-		return db.searchUser(t1);
-	}
+	
 
 	public boolean updateTemplate(Template oldTemplate, String stem, String form) {
 		if(CheckUtil.checkNotBlank(stem)&&CheckUtil.checkNotBlank(form)) {
@@ -508,4 +529,5 @@ public class Service {
 			return false;
 		}
 	}
+	
 }

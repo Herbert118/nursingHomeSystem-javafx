@@ -3,11 +3,15 @@ package com.neuedu.model;
 
 import java.io.Serializable;
 
+/**
+ * @author 刘海波
+ * 地点类型的父类，主要是为了装入TreeTableView
+ */
 public abstract class Site implements Serializable {
-    /**
-	 * 
-	 */
+    
 	private static final long serialVersionUID = -6652372784397410631L;
+	
+	//WritableStringProperty 继承了 SimpleStringProperty , 是之可序列化
 	private WritableStringProperty name;
 	private WritableStringProperty siteId;
     private WritableStringProperty type;

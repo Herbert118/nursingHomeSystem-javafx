@@ -61,14 +61,22 @@ public class SiteViewController {
         
     }
     
+    /**
+     * @param event
+     * @description 弹出模态框,将点击的对象传入,进行对应的新增操作 
+     */
     @FXML
+    
     void addNode(ActionEvent event) {
     	if(ttvsm.getSelectedItem()!=null) {
-    	
+    	//获取点击对象
     	  Site site = ttvsm.getSelectedItem().getValue();
     	  if(!site.getType().equals("specialRoom")&&!site.getType().equals("bed")) {
+    	//弹出模态框
     	  SiteModal modal = new SiteModal(service,site);
     	  modal.addSite();
+    	  
+    	 //拉取数据刷新缓存
     	  initData();
     	  }
     	  else {

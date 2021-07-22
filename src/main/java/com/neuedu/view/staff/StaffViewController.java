@@ -65,7 +65,7 @@ public class StaffViewController {
     		try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
     		System.out.println("null");
@@ -85,11 +85,12 @@ public class StaffViewController {
 			searchFld.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    if(t1 == null){
+                    if(t1 == null||"".equals(t1)){
+                    	
                         staffTable.setItems(service.getStaffList(staffLoc));
                     }
                     else {
-                        staffTable.setItems(service.searchUser(t1));
+                        staffTable.setItems(service.searchUser(service.getStaffList(staffLoc),t1));
                     }
                 }
             });

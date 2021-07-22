@@ -8,6 +8,11 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author 刘海波
+ * @description
+ * 主程序，初始化路由，展示stage，并在最后保存文件
+ */
 public class MainApp extends Application{
 	private Stage primaryStage;
 	
@@ -19,6 +24,7 @@ public class MainApp extends Application{
 		Service service = Service.getInstance();
 		
 		primaryStage.setResizable(false);
+		primaryStage.setTitle("东软颐养中心");
 		primaryStage.setOnCloseRequest(e ->{
 			service.save();
 		});
