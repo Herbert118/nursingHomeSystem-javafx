@@ -47,6 +47,7 @@ public class SpecialViewController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		localCol.setCellValueFactory(new PropertyValueFactory<>("location"));
 		containNumCol.setCellValueFactory(cellData->{
+		    //TODO: learn this!
 			return new SimpleStringProperty(String.valueOf(cellData.getValue().getContainNum()));
 		});
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

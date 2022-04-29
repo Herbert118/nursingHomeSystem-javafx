@@ -52,7 +52,7 @@ public class EvaluateModal {
 		mesText = new Text();
 		pane = new ScrollPane();
 		quesVBox = new VBox();
-		confirmBtn = new JFXButton("confirm");
+		confirmBtn = new JFXButton("确认");
 		tgroupList = new ArrayList<ToggleGroup>();
 	}
 	

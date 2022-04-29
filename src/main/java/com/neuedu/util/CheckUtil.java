@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class CheckUtil {
     public static boolean checkNotBlank(String string){
         if (string!=null){
-            if(!string.isBlank()){
+            if(!string.isEmpty()){
                 return true;
             }
         }

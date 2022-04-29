@@ -14,21 +14,7 @@ import javafx.collections.ObservableList;
  * @author 刘海波
  *	@description 单例， 负责存储各个model信息， 读写文件，并进行基本CRUD ，下以User为例
  */
-/**
- * @author 刘海波
- *
- */
-/**
- * @author 刘海波
- *
- */
-/**
- * @author 刘海波
- *
- */
-/**
- * @author 刘海波
- *
+/*
  */
 public class Database {
 	private static Database db;
@@ -630,6 +616,7 @@ public class Database {
 
 	public boolean updateQuestion(Question oldQuestion, Question newQuestion) {
 		if (questionList.contains(oldQuestion)) {
+			newQuestion.setId(oldQuestion.getId());
 			return this.updateQuestion(questionList.indexOf(oldQuestion), newQuestion);
 		} else {
 			return false;

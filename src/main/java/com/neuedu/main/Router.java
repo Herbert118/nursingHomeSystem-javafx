@@ -49,8 +49,8 @@ public class Router {
 	 * 跳转至楼宇管理
 	 */
 	public void navToBuidingView() {
-    	
 		URL url = this.getClass().getResource(("../view/site/siteView.fxml"));
+		System.out.println(url);
 		try{
 			//加载对应的fxml文件
 			Parent buildingView = FXMLLoader.load(url);
@@ -66,7 +66,9 @@ public class Router {
 	public void initToMenu(User user) {
 		//加载fxml文件和相应的控制器
 		FXMLLoader loader = new FXMLLoader();
+
 		URL url = this.getClass().getResource("../view/mainFrame/mainFrame.fxml");
+		System.out.println(url);
 		loader.setLocation(url);
 		MainFrameController controller = new MainFrameController();
 		controller.setUser(user);
